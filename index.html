@@ -171,6 +171,16 @@
   .message .quote{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(1.5rem,4.2vw,2.4rem);color:var(--cream-text);max-width:26ch;margin:0 auto;line-height:1.42;}
   .message .by{margin-top:26px;font-family:var(--sans);font-size:.66rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold-deep);}
 
+  /* ========== CHAI ELEPHANTS ========== */
+  .message{isolation:isolate;}
+  .chai-elephant{position:absolute;top:50%;width:clamp(120px,22vw,260px);z-index:0;pointer-events:none;opacity:0;will-change:transform,opacity;transition:transform 1.35s cubic-bezier(.2,.8,.2,1),opacity 1.1s ease;}
+  .chai-elephant img{display:block;width:100%;height:auto;filter:drop-shadow(0 18px 22px rgba(122,42,65,.18));}
+  .chai-elephant.left{left:clamp(8px,4vw,54px);transform:translate3d(-115%, -50%, 0);}
+  .chai-elephant.right{right:clamp(8px,4vw,54px);transform:translate3d(115%, -50%, 0);}
+  .message.in-view .chai-elephant.left{transform:translate3d(0, -50%, 0);opacity:1;}
+  .message.in-view .chai-elephant.right{transform:translate3d(0, -50%, 0);opacity:1;}
+  .message .cartouche,.message .quote,.message .by{position:relative;z-index:1;}
+
   /* ========== RSVP ========== */
   .rsvp{text-align:center;}
   .rsvp-form{max-width:560px;margin:46px auto 0;display:grid;gap:18px;text-align:left;}
@@ -244,6 +254,9 @@
     .hero-eyebrow{font-size:.5rem;letter-spacing:.26em;padding-left:.26em;}
     .hero-blessing{font-size:1.05rem;}
     .hero-namemeta{font-size:.58rem;letter-spacing:.26em;gap:8px 10px;}
+    .chai-elephant{width:clamp(82px,26vw,130px);top:18%;opacity:.95;}
+    .chai-elephant.left{left:-8px;}
+    .chai-elephant.right{right:-8px;}
   }
   @media (max-width:380px){
     .hero-eyebrow{font-size:.46rem;letter-spacing:.18em;padding-left:.18em;}
@@ -368,7 +381,9 @@
 </section>
 
 <!-- ===== MESSAGE ===== -->
-<section class="sec emerald jewel message pad">
+<section class="sec emerald jewel message pad" id="chaiMessage">
+  <span class="chai-elephant left"><img src="assets/gfx/chai-elephant-left.png" alt="Decorative elephant entering from the left"></span>
+  <span class="chai-elephant right"><img src="assets/gfx/chai-elephant-right.png" alt="Decorative elephant entering from the right"></span>
   <img class="cartouche reveal" src="assets/gfx/cartouche.svg" alt="" data-par="8">
   <p class="quote reveal">"From a chance cup of chai to forever — we can't wait to celebrate with the people who made our story whole."</p>
   <div class="by reveal">— Kamayani &amp; Ankit</div>
@@ -608,6 +623,20 @@
   tick(); setInterval(tick,1000);
 })();
 
+
+/* ===================== CHAI ELEPHANTS ===================== */
+(function(){
+  const chai = document.getElementById('chaiMessage');
+  if(!chai) return;
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting) chai.classList.add('in-view');
+      else chai.classList.remove('in-view');
+    });
+  },{threshold:0.35});
+  io.observe(chai);
+})();
+
 /* ===================== RSVP (front-end only) ===================== */
 (function(){
   const form=document.getElementById('rsvpForm');
@@ -623,3 +652,4 @@
 </script>
 </body>
 </html>
+
