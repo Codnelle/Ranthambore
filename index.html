@@ -63,7 +63,7 @@
   .loader-pct{font-family:var(--sans);font-size:.58rem;letter-spacing:.4em;color:var(--ink-soft);}
 
   /* ========== SCROLLY HERO ========== */
-  .reveal-hero{position:relative;background:#0c0610;height:780vh;}
+  .reveal-hero{position:relative;background:#0c0610;height:380vh;}
   .reveal-sticky{position:sticky;top:0;height:100vh;width:100%;overflow:hidden;}
   #frameCanvas{position:absolute;inset:0;width:100%;height:100%;display:block;background:#0c0610;}
   .reveal-sticky::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:3;background:radial-gradient(ellipse 85% 75% at 50% 45%, transparent 42%, rgba(8,16,12,.55) 100%),linear-gradient(180deg, rgba(8,16,12,.35) 0%, transparent 24%, transparent 62%, rgba(18,63,53,.25) 100%);}
@@ -305,19 +305,19 @@
   <span class="corner tl"></span>
   <span class="corner br"></span>
   <div class="reveal">
+    <img src="./assets/gfx/ganeshji.png" style="width: 10vh; height: 10vh;" alt="">
     <div class="om">ॐ श्री गणेशाय नमः</div>
-    <div class="invite-lead">With the blessings of the Almighty &amp; their families</div>
+    <div class="invite-lead">The <span style="font-weight: 900;">Gupta</span> and <span style="font-weight: 900;">Nagar</span> families <br /> warmly welcome you to celebrate the marriage<br /> of</div>
   </div>
   <div class="invite-names reveal">
     <span class="n">Kamayani</span><br>
     <span class="weds">weds</span>
     <span class="n">Ankit</span>
   </div>
-  <p class="invite-body reveal">request the honour of your presence as they begin a new chapter, hand in hand, amid the royal splendour of Ranthambore.</p>
+  <p class="invite-body reveal">as they tie the knot amid the royal splendour of Ranthambore</p>
   <div class="invite-where reveal">31<sup>st</sup> Oct &amp; 1<sup>st</sup> Nov 2026 &nbsp;·&nbsp; <b>Nahargarh Palace, Ranthambore</b></div>
   <div class="flourish reveal"><span class="l"></span><span class="o"></span><span class="d"></span><span class="o"></span><span class="l r"></span></div>
 </section>
-
 <!-- ===== EVENTS ===== -->
 <section class="sec emerald-deep-bg jewel events pad">
   <span class="lantern" data-par="60"  style="top:3%;left:6%;width:60px;--d:7s;--dl:0s"><i></i></span>
@@ -329,10 +329,10 @@
   <span class="lantern" data-par="50"  style="top:75%;left:17%;width:58px;--d:8s;--dl:-2.5s"><i></i></span>
   <span class="lantern" data-par="120" style="top:87%;right:12%;width:80px;--d:9.5s;--dl:-1s"><i></i></span>
 
-  <div class="eyebrow reveal">On the following events</div>
+  <!-- <div class="eyebrow reveal">On the following events</div> -->
   <h2 class="title reveal">Two days <span class="gold">of celebration</span></h2>
   <div class="flourish reveal"><span class="l"></span><span class="o"></span><span class="d"></span><span class="o"></span><span class="l r"></span></div>
-  <p class="sub reveal">Five ceremonies, endless music and colour — all within the regal grounds of Nahargarh Palace, Ranthambore.</p>
+  <p class="sub reveal">A little look at what awaits...</p>
 
   <div class="day reveal">
     <div class="day-head">
@@ -340,8 +340,8 @@
       <div style="text-align:right"><div class="day-date">Friday · 31 October 2026</div><div class="day-name">The festivities begin</div></div>
     </div>
     <div class="ev-list">
-      <a class="ev reveal" href="events/haldi.html"><div class="ev-frame"><div class="ev-photo" style="background-image:url('assets/gfx/ev-haldi.png')"></div><img class="fr" src="assets/gfx/frame.svg" alt=""></div><div class="ev-time">1:00 PM</div><div class="ev-name">Haldi</div><div class="ev-venue"><b>Baghici Lawn</b><br>Nahargarh Palace, Ranthambore</div></a>
-      <a class="ev reveal" href="events/sangeet.html"><div class="ev-frame"><div class="ev-photo" style="background-image:url('assets/gfx/ev-sangeet.png')"></div><img class="fr" src="assets/gfx/frame.svg" alt=""></div><div class="ev-time">8:00 PM onwards</div><div class="ev-name">Sangeet Night</div><div class="ev-venue"><b>Arjun Mahal</b><br>Nahargarh Palace, Ranthambore</div></a>
+      <a class="ev reveal" href="events/haldi.html"><div class="ev-frame"><div class="ev-photo" style="background-image:url('assets/gfx/haldi.png')"></div><img class="fr" src="assets/gfx/frame.svg" alt=""></div><div class="ev-time">1:00 PM</div><div class="ev-name">Haldi</div><div class="ev-venue"><b>Baghici Lawn</b><br>Nahargarh Palace, Ranthambore</div></a>
+      <a class="ev reveal" href="events/sangeet.html"><div class="ev-frame"><div class="ev-photo" style="background-image:url('assets/gfx/sangeet.png')"></div><img class="fr" src="assets/gfx/frame.svg" alt=""></div><div class="ev-time">8:00 PM onwards</div><div class="ev-name">Sangeet</div><div class="ev-venue"><b>Arjun Mahal</b><br>Nahargarh Palace, Ranthambore</div></a>
     </div>
   </div>
 
@@ -411,7 +411,7 @@
       </div>
       <div class="field"><label>Which celebrations?</label>
         <div class="row2" style="gap:10px">
-          <select id="rday1"><option value="">Day 1 — 31 Oct</option><option>Haldi</option><option>Sangeet Night</option><option>Both</option></select>
+          <select id="rday1"><option value="">Day 1 — 31 Oct</option><option>Haldi</option><option>Sangeet</option><option>Both</option></select>
           <select id="rday2"><option value="">Day 2 — 1 Nov</option><option>Rajasthani Bhoj</option><option>Phera Ceremony</option><option>Reception</option><option>All</option></select>
         </div>
       </div>
@@ -522,7 +522,7 @@
     const scrollable = heroSec.offsetHeight - window.innerHeight;
     let p = scrollable>0 ? (-rect.top)/scrollable : 0;
     p = Math.max(0, Math.min(1, p));
-    drawFrame(Math.round(p*(TOTAL-1)));
+    drawFrame(Math.round(p*(TOTAL-1))); 
 
     const introOut = 1 - lerp(p, 0.05, 0.20);
     hEyebrow.style.opacity = introOut;
