@@ -137,25 +137,74 @@
   .lantern i{display:block;width:100%;height:100%;background:url("assets/gfx/lantern.svg") center/contain no-repeat;filter:drop-shadow(0 0 16px rgba(255,160,70,.45));animation:bob var(--d,7s) ease-in-out infinite;animation-delay:var(--dl,0s);}
   @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
 
-  .day{margin-top:clamp(48px,7vw,80px);}
-  .day-head{display:flex;align-items:center;gap:18px;margin-bottom:44px;}
-  .day-head .num{font-family:var(--disp);font-size:clamp(1rem,2.6vw,1.3rem);letter-spacing:.2em;color:var(--gold-deep);white-space:nowrap;}
-  .day-head .ln{flex:1;height:1px;background:rgba(148,108,28,.45);}
-  .day-date{font-family:var(--sans);font-size:.62rem;letter-spacing:.32em;text-transform:uppercase;color:var(--ink-soft);}
-  .day-name{font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,3.6vw,1.9rem);color:var(--cream-text);line-height:1.1;}
-  .ev-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:clamp(26px,4vw,46px);justify-items:center;}
-  .ev{display:block;text-decoration:none;color:inherit;cursor:pointer;text-align:center;max-width:300px;transition:transform .5s cubic-bezier(.2,.7,.2,1);}
-  .ev .ev-name{transition:color .3s ease;}
+  /* ── TIMELINE FLOW ── */
+  .timeline{position:relative;max-width:860px;margin:clamp(48px,7vw,80px) auto 0;}
+  /* central vertical line */
+  .timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(180deg,transparent 0%,rgba(148,108,28,.32) 6%,rgba(148,108,28,.32) 94%,transparent 100%);transform:translateX(-50%);z-index:0;}
+
+  /* day badge — centred on the spine */
+  .day-badge{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;margin:clamp(40px,7vw,72px) 0 clamp(32px,5vw,52px);}
+  .day-badge:first-child{margin-top:0;}
+  .day-badge-pill{background:var(--wine);color:#FFF3E2;font-family:var(--disp);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;padding:9px 28px;border-radius:100px;white-space:nowrap;box-shadow:0 8px 24px -8px rgba(122,42,65,.5);}
+  .day-badge-sub{margin-top:9px;font-family:var(--serif);font-style:italic;font-size:clamp(.95rem,2.2vw,1.15rem);color:var(--cream-text);opacity:.75;}
+
+  /* individual event row — alternates left/right */
+  .ev-row{position:relative;display:flex;align-items:center;justify-content:flex-end;margin-bottom:clamp(32px,5vw,56px);z-index:1;}
+  .ev-row.right{justify-content:flex-start;}
+
+  /* dot on the spine */
+  .ev-row::before{content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:12px;height:12px;border-radius:50%;background:var(--gold);border:2.5px solid #fff;box-shadow:0 0 0 4px rgba(190,151,47,.22);z-index:3;}
+
+  /* horizontal connector from dot to card */
+  .ev-row::after{content:'';position:absolute;top:50%;height:1px;background:rgba(148,108,28,.3);z-index:0;}
+  .ev-row:not(.right)::after{right:50%;width:calc(50% - 46px);transform:translateY(-50%);}
+  .ev-row.right::after{left:50%;width:calc(50% - 46px);transform:translateY(-50%);}
+
+  /* ── THE CARD ── */
+  .ev{
+    display:block;text-decoration:none;color:inherit;cursor:pointer;
+    width:calc(50% - 58px);
+    background:#fff;
+    border:1px solid rgba(190,151,47,.18);
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 8px 32px -16px rgba(122,42,65,.18);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s ease;
+    position:relative;
+  }
+  .ev:hover{transform:translateY(-6px);box-shadow:0 28px 52px -22px rgba(122,42,65,.32);}
+
+  /* arch image — full width at top of card */
+  .ev-arch{
+    width:100%;
+    aspect-ratio:4/3;
+    background-size:cover;
+    background-position:center top;
+    /* arch: round top corners, straight bottom */
+    border-radius:16px 16px 0 0;
+    position:relative;
+  }
+  /* subtle gold bottom border on arch */
+  .ev-arch::after{content:'';position:absolute;bottom:0;left:12%;right:12%;height:1px;background:linear-gradient(90deg,transparent,rgba(190,151,47,.5),transparent);}
+
+  /* text body below image */
+  .ev-body{padding:18px 20px 20px;}
+  .ev-time{font-family:var(--sans);font-size:.56rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:5px;font-weight:600;}
+  .ev-name{font-family:var(--serif);font-weight:600;font-size:clamp(1.15rem,2.4vw,1.5rem);color:var(--cream-text);margin-bottom:6px;line-height:1.12;transition:color .3s ease;}
   .ev:hover .ev-name{color:var(--gold-deep);}
-  .ev-frame{position:relative;width:clamp(180px,40vw,248px);aspect-ratio:320/400;margin:0 auto 22px;}
-  .ev-photo{position:absolute;left:17.5%;right:17.5%;top:16.4%;bottom:16.4%;border-radius:50%;background-size:cover;background-position:center;box-shadow:inset 0 0 26px rgba(60,30,10,.55);}
-  .ev-frame .fr{position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 10px 20px rgba(0,0,0,.35));}
-  .ev:hover{transform:translateY(-8px);}
-  .ev-time{font-family:var(--sans);font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:10px;font-weight:600;}
-  .ev-name{font-family:var(--serif);font-weight:600;font-size:clamp(1.5rem,3.2vw,2rem);color:var(--cream-text);margin-bottom:8px;}
-  .ev-venue{color:var(--ink-soft);font-size:.94rem;line-height:1.5;font-weight:400;}
+  .ev-divider{width:28px;height:1px;background:var(--gold);margin-bottom:8px;opacity:.6;}
+  .ev-venue{color:var(--ink-soft);font-size:.84rem;line-height:1.6;font-weight:400;}
   .ev-venue b{color:var(--wine);font-weight:600;}
-  .ev-note{display:block;margin-top:6px;font-family:var(--serif);font-style:italic;font-size:.94rem;color:var(--gold-deep);opacity:.95;}
+  .ev-note{display:block;margin-top:7px;font-family:var(--serif);font-style:italic;font-size:.86rem;color:var(--gold-deep);opacity:.9;}
+
+  @media(max-width:640px){
+    .timeline::before{left:20px;}
+    .ev-row,.ev-row.right{justify-content:flex-end;padding-left:48px;}
+    .ev-row::before{left:20px;}
+    .ev-row::after,.ev-row.right::after{display:none;}
+    .ev{width:100%;}
+    .day-badge{align-items:flex-start;padding-left:48px;}
+  }
 
   /* ========== COUPLE ========== */
   .couple-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,7vw,80px);margin-top:56px;}
@@ -331,31 +380,85 @@
   <span class="lantern" data-par="120" style="top:87%;right:12%;width:80px;--d:9.5s;--dl:-1s"><i></i></span>
 
   <!-- <div class="eyebrow reveal">On the following events</div> -->
-  <h2 class="title reveal">Two days <span class="gold">of celebration</span></h2>
+  <h2 class="title reveal">Two days <span class="gold">of Festivities</span></h2>
   <div class="flourish reveal"><span class="l"></span><span class="o"></span><span class="d"></span><span class="o"></span><span class="l r"></span></div>
   <p class="sub reveal">A little look at what awaits...</p>
 
-  <div class="day reveal">
-    <div class="day-head">
-      <div class="num">DAY ONE</div><div class="ln"></div>
-      <div style="text-align:right"><div class="day-date">Friday · 31 October 2026</div><div class="day-name">The festivities begin</div></div>
-    </div>
-    <div class="ev-list">
-      <a class="ev reveal" href="events/haldi.html"><div class="ev-frame"><div class="ev-photo" style="background-image:url('assets/gfx/haldi.png')"></div><img class="fr" src="assets/gfx/frame.svg" alt=""></div><div class="ev-time">1:00 PM</div><div class="ev-name">Haldi</div><div class="ev-venue"><b>Baghici Lawn</b><br>Nahargarh Palace, Ranthambore</div></a>
-      <a class="ev reveal" href="events/sangeet.html"><div class="ev-frame"><div class="ev-photo" style="background-image:url('assets/gfx/sangeet.png')"></div><img class="fr" src="assets/gfx/frame.svg" alt=""></div><div class="ev-time">8:00 PM onwards</div><div class="ev-name">Sangeet</div><div class="ev-venue"><b>Arjun Mahal</b><br>Nahargarh Palace, Ranthambore</div></a>
-    </div>
-  </div>
+  <div class="timeline">
 
-  <div class="day reveal">
-    <div class="day-head">
-      <div class="num">DAY TWO</div><div class="ln"></div>
-      <div style="text-align:right"><div class="day-date">Saturday · 1 November 2026</div><div class="day-name">The wedding day</div></div>
+    <!-- ─── DAY ONE ─── -->
+    <div class="day-badge reveal">
+      <div class="day-badge-pill">Day One · 31 October 2026</div>
+      <div class="day-badge-sub">The festivities begin</div>
     </div>
-    <div class="ev-list">
-      <a class="ev reveal" href="events/bhoj.html"><div class="ev-frame"><div class="ev-photo" style="background-image:url('assets/gfx/ev-bhoj.png')"></div><img class="fr" src="assets/gfx/frame.svg" alt=""></div><div class="ev-time">12:00 PM onwards</div><div class="ev-name">Rajasthani Bhoj</div><div class="ev-venue"><b>Chandra Mahal</b><br>Nahargarh Palace, Ranthambore</div></a>
-      <a class="ev reveal" href="events/phera.html"><div class="ev-frame"><div class="ev-photo" style="background-image:url('assets/gfx/phera.png')"></div><img class="fr" src="assets/gfx/frame.svg" alt=""></div><div class="ev-time">5:00 PM</div><div class="ev-name">Sacred Phera</div><div class="ev-venue"><b>Hathi Kund</b><br>Nahargarh Palace, Ranthambore<span class="ev-note">where two souls become one</span></div></a>
-      <a class="ev reveal" href="events/reception.html"><div class="ev-frame"><div class="ev-photo" style="background-image:url('assets/gfx/ev-reception.png')"></div><img class="fr" src="assets/gfx/frame.svg" alt=""></div><div class="ev-time">8:00 PM onwards</div><div class="ev-name">Reception Dinner</div><div class="ev-venue"><b>Chandni Lawn</b><br>Nahargarh Palace, Ranthambore<span class="ev-note">dinner, dancing &amp; farewells under the stars</span></div></a>
+
+    <div class="ev-row reveal">
+      <a class="ev" href="events/haldi.html">
+        <div class="ev-arch" style="background-image:url('assets/gfx/haldi.png')"></div>
+        <div class="ev-body">
+          <div class="ev-time">2:00 PM</div>
+          <div class="ev-name">Haldi</div>
+          <div class="ev-divider"></div>
+          <div class="ev-venue"><b>The Bagichi</b></div>
+        </div>
+      </a>
     </div>
+
+    <div class="ev-row right reveal">
+      <a class="ev" href="events/sangeet.html">
+        <div class="ev-arch" style="background-image:url('assets/gfx/sangeet.png')"></div>
+        <div class="ev-body">
+          <div class="ev-time">8:00 PM onwards</div>
+          <div class="ev-name">Sangeet</div>
+          <div class="ev-divider"></div>
+          <div class="ev-venue"><b>Arjun Mahal</b></div>
+        </div>
+      </a>
+    </div>
+
+    <!-- ─── DAY TWO ─── -->
+    <div class="day-badge reveal">
+      <div class="day-badge-pill">Day Two · 1 November 2026</div>
+      <div class="day-badge-sub">The wedding day</div>
+    </div>
+
+    <div class="ev-row reveal">
+      <a class="ev" href="events/bhoj.html">
+        <div class="ev-arch" style="background-image:url('assets/gfx/ev-bhoj.png')"></div>
+        <div class="ev-body">
+          <div class="ev-time">12:00 PM-4:30PM</div>
+          <div class="ev-time">Feel free to join us at your leisure</div>
+          <div class="ev-name">Rajasthani Bhoj</div>
+          <div class="ev-divider"></div>
+          <div class="ev-venue"><b>Chandra Mahal</b></div>
+        </div>
+      </a>
+    </div>
+
+    <div class="ev-row right reveal">
+      <a class="ev" href="events/phera.html">
+        <div class="ev-arch" style="background-image:url('assets/gfx/phera.png')"></div>
+        <div class="ev-body">
+          <div class="ev-time">5:00 PM</div>
+          <div class="ev-name">The Wedding</div>
+          <div class="ev-divider"></div>
+          <div class="ev-venue"><b>Hathi Kund</b><span class="ev-note">where two souls become one</span></div>
+        </div>
+      </a>
+    </div>
+
+    <div class="ev-row reveal">
+      <a class="ev" href="events/reception.html">
+        <div class="ev-arch" style="background-image:url('assets/gfx/ev-reception.png')"></div>
+        <div class="ev-body">
+          <div class="ev-time">8:00 PM onwards</div>
+          <div class="ev-name">Reception Dinner</div>
+          <div class="ev-divider"></div>
+          <div class="ev-venue"><b>Chandni Lawn</b><span class="ev-note">dinner, dancing &amp; farewells under the stars</span></div>
+        </div>
+      </a>
+    </div>
+
   </div>
 </section>
 
