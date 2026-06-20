@@ -8,7 +8,8 @@
       "Read(//tmp/**)",
       "Bash(ls -la \"/Users/kashish/Downloads/WhatsApp Video 2026-05-17 at 2.56.08 PM.mp4\" && ls -la /Users/kashish/mixtape/ 2>/dev/null && echo \"---ffmpeg---\" && which ffmpeg ffprobe)",
       "Bash(brew install *)",
-      "WebFetch(domain:www.missingpieceinvites.com)"
+      "WebFetch(domain:www.missingpieceinvites.com)",
+      "Bash(perl -0pi -e 's{<div class=\"ev-divider\"></div>}{<div class=\"ev-divider\"><i></i></div>}g' index.html)"
     ]
   }
 }

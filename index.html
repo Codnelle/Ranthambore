@@ -137,73 +137,102 @@
   .lantern i{display:block;width:100%;height:100%;background:url("assets/gfx/lantern.svg") center/contain no-repeat;filter:drop-shadow(0 0 16px rgba(255,160,70,.45));animation:bob var(--d,7s) ease-in-out infinite;animation-delay:var(--dl,0s);}
   @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
 
-  /* ── TIMELINE FLOW ── */
-  .timeline{position:relative;max-width:860px;margin:clamp(48px,7vw,80px) auto 0;}
-  /* central vertical line */
-  .timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(180deg,transparent 0%,rgba(148,108,28,.32) 6%,rgba(148,108,28,.32) 94%,transparent 100%);transform:translateX(-50%);z-index:0;}
+  /* ── ROYAL TIMELINE ── */
+  .timeline{position:relative;max-width:880px;margin:clamp(40px,6vw,68px) auto 0;}
+  /* ornate central spine — twin gold hairlines with a soft glow */
+  .timeline::before{content:'';position:absolute;left:50%;top:34px;bottom:34px;width:3px;
+    background:
+      linear-gradient(180deg,transparent,rgba(148,108,28,.55) 4%,rgba(148,108,28,.55) 96%,transparent),
+      linear-gradient(90deg,transparent 0,rgba(190,151,47,.5) 50%,transparent 100%);
+    background-size:1px 100%,3px 100%;background-repeat:no-repeat;background-position:center,center;
+    transform:translateX(-50%);z-index:0;}
 
-  /* day badge — centred on the spine */
-  .day-badge{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;margin:clamp(40px,7vw,72px) 0 clamp(32px,5vw,52px);}
-  .day-badge:first-child{margin-top:0;}
-  .day-badge-pill{background:var(--wine);color:#FFF3E2;font-family:var(--disp);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;padding:9px 28px;border-radius:100px;white-space:nowrap;box-shadow:0 8px 24px -8px rgba(122,42,65,.5);}
-  .day-badge-sub{margin-top:9px;font-family:var(--serif);font-style:italic;font-size:clamp(.95rem,2.2vw,1.15rem);color:var(--cream-text);opacity:.75;}
+  /* crest / monogram at the very top of the timeline */
+  .tl-crest{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;margin-bottom:8px;}
+  .tl-crest svg{width:clamp(60px,11vw,86px);height:auto;color:var(--gold-deep);filter:drop-shadow(0 6px 14px rgba(122,42,65,.18));}
+
+  /* day banner — ribbon flag centred on the spine */
+  .day-badge{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;margin:clamp(44px,7vw,76px) 0 clamp(34px,5vw,56px);}
+  .day-badge:first-of-type{margin-top:clamp(20px,3vw,30px);}
+  .day-badge-pill{position:relative;background:linear-gradient(180deg,var(--wine) 0%,var(--wine-deep) 100%);color:#FFF3E2;font-family:var(--disp);font-size:clamp(.62rem,1.6vw,.74rem);letter-spacing:.26em;text-transform:uppercase;padding:13px 40px;white-space:nowrap;
+    clip-path:polygon(0 0,100% 0,100% 70%,calc(100% - 14px) 100%,14px 100%,0 70%);
+    box-shadow:0 12px 30px -10px rgba(83,27,44,.6);border-top:1px solid rgba(232,206,138,.45);}
+  /* inner hairline frame on the banner */
+  .day-badge-pill::before{content:'';position:absolute;inset:4px 9px;border:1px solid rgba(232,206,138,.4);clip-path:inherit;pointer-events:none;}
+  /* little gold diamonds flanking the banner */
+  .day-badge-pill::after{content:'';position:absolute;left:50%;bottom:-15px;width:7px;height:7px;background:var(--gold);transform:translateX(-50%) rotate(45deg);box-shadow:0 0 0 4px rgba(190,151,47,.18);}
+  .day-badge-sub{margin-top:24px;font-family:var(--serif);font-style:italic;font-size:clamp(1rem,2.3vw,1.22rem);color:var(--cream-text);opacity:.82;}
 
   /* individual event row — alternates left/right */
-  .ev-row{position:relative;display:flex;align-items:center;justify-content:flex-end;margin-bottom:clamp(32px,5vw,56px);z-index:1;}
+  .ev-row{position:relative;display:flex;align-items:center;justify-content:flex-end;margin-bottom:clamp(34px,5vw,60px);z-index:1;}
   .ev-row.right{justify-content:flex-start;}
 
-  /* dot on the spine */
-  .ev-row::before{content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:12px;height:12px;border-radius:50%;background:var(--gold);border:2.5px solid #fff;box-shadow:0 0 0 4px rgba(190,151,47,.22);z-index:3;}
+  /* ornate medallion on the spine */
+  .ev-row::before{content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(45deg);width:16px;height:16px;background:linear-gradient(135deg,var(--gold-light),var(--gold-deep));border:2px solid #fff;box-shadow:0 0 0 4px rgba(190,151,47,.2),0 4px 10px -3px rgba(122,42,65,.4);z-index:3;}
 
-  /* horizontal connector from dot to card */
-  .ev-row::after{content:'';position:absolute;top:50%;height:1px;background:rgba(148,108,28,.3);z-index:0;}
-  .ev-row:not(.right)::after{right:50%;width:calc(50% - 46px);transform:translateY(-50%);}
-  .ev-row.right::after{left:50%;width:calc(50% - 46px);transform:translateY(-50%);}
+  /* horizontal connector from medallion to card */
+  .ev-row::after{content:'';position:absolute;top:50%;height:1px;background:linear-gradient(90deg,rgba(148,108,28,.45),rgba(148,108,28,.15));z-index:0;}
+  .ev-row:not(.right)::after{right:50%;width:calc(50% - 50px);transform:translateY(-50%);background:linear-gradient(270deg,rgba(148,108,28,.45),rgba(148,108,28,.15));}
+  .ev-row.right::after{left:50%;width:calc(50% - 50px);transform:translateY(-50%);}
 
-  /* ── THE CARD ── */
+  /* ── THE ROYAL FRAMED EVENT ── */
   .ev{
     display:block;text-decoration:none;color:inherit;cursor:pointer;
-    width:calc(50% - 58px);
-    background:#fff;
-    border:1px solid rgba(190,151,47,.18);
-    border-radius:20px;
-    overflow:hidden;
-    box-shadow:0 8px 32px -16px rgba(122,42,65,.18);
-    transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s ease;
+    width:calc(50% - 64px);
+    background:transparent;border:0;padding:0;
+    transition:transform .45s cubic-bezier(.2,.7,.2,1),filter .45s ease;
     position:relative;
+    filter:drop-shadow(0 22px 34px rgba(122,42,65,.32));
   }
-  .ev:hover{transform:translateY(-6px);box-shadow:0 28px 52px -22px rgba(122,42,65,.32);}
+  .ev:hover{transform:translateY(-7px);filter:drop-shadow(0 34px 46px rgba(122,42,65,.42));}
 
-  /* arch image — full width at top of card */
+  /* ── OVAL FRAME (overlay technique) ──
+     The photo sits behind, clipped to an ellipse that matches the frame's
+     opening; the ornate oval frame PNG is laid on top. Container aspect &
+     opening insets are measured from frame-oval.png (552×736, opening ~21.5%). */
   .ev-arch{
-    width:100%;
-    aspect-ratio:4/3;
-    background-size:cover;
-    background-position:center top;
-    /* arch: round top corners, straight bottom */
-    border-radius:16px 16px 0 0;
-    position:relative;
+    position:relative;display:block;width:100%;
+    aspect-ratio:552/736;          /* match the frame so it isn't distorted */
   }
-  /* subtle gold bottom border on arch */
-  .ev-arch::after{content:'';position:absolute;bottom:0;left:12%;right:12%;height:1px;background:linear-gradient(90deg,transparent,rgba(190,151,47,.5),transparent);}
+  /* the frame, laid over the photo */
+  .ev-arch::after{
+    content:'';position:absolute;inset:0;z-index:2;pointer-events:none;
+    background:url("assets/gfx/frame-oval.png") center/100% 100% no-repeat;
+  }
+  /* the photo, clipped to the oval opening (slightly inflated so it tucks
+     under the gold ring with no gap) */
+  .ev-photo{
+    position:absolute;z-index:1;
+    left:20.2%;top:20.5%;width:59.2%;height:59.5%;
+    object-fit:cover;object-position:center;
+    clip-path:ellipse(50% 50% at 50% 50%);
+  }
 
-  /* text body below image */
-  .ev-body{padding:18px 20px 20px;}
-  .ev-time{font-family:var(--sans);font-size:.56rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:5px;font-weight:600;}
-  .ev-name{font-family:var(--serif);font-weight:600;font-size:clamp(1.15rem,2.4vw,1.5rem);color:var(--cream-text);margin-bottom:6px;line-height:1.12;transition:color .3s ease;}
+  /* text body below the frame */
+  .ev-body{padding:14px 16px 6px;text-align:center;position:relative;}
+  .ev-time{font-family:var(--sans);font-size:.56rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:7px;font-weight:600;}
+  .ev-name{font-family:var(--disp);font-weight:400;font-size:clamp(1.2rem,2.6vw,1.6rem);color:var(--cream-text);margin-bottom:9px;line-height:1.14;letter-spacing:.04em;transition:color .3s ease;}
   .ev:hover .ev-name{color:var(--gold-deep);}
-  .ev-divider{width:28px;height:1px;background:var(--gold);margin-bottom:8px;opacity:.6;}
-  .ev-venue{color:var(--ink-soft);font-size:.84rem;line-height:1.6;font-weight:400;}
-  .ev-venue b{color:var(--wine);font-weight:600;}
-  .ev-note{display:block;margin-top:7px;font-family:var(--serif);font-style:italic;font-size:.86rem;color:var(--gold-deep);opacity:.9;}
+  /* ornamental divider — diamond between two rules */
+  .ev-divider{display:flex;align-items:center;justify-content:center;gap:7px;margin:0 auto 11px;}
+  .ev-divider::before,.ev-divider::after{content:'';width:26px;height:1px;background:linear-gradient(90deg,transparent,var(--gold));}
+  .ev-divider::after{background:linear-gradient(90deg,var(--gold),transparent);}
+  .ev-divider i{width:6px;height:6px;background:var(--gold);transform:rotate(45deg);flex:none;}
+  .ev-venue{color:var(--ink-soft);font-size:.86rem;line-height:1.6;font-weight:400;}
+  .ev-venue b{color:var(--wine);font-weight:600;font-family:var(--serif);font-size:1.04rem;letter-spacing:.01em;}
+  .ev-note{display:block;margin-top:8px;font-family:var(--serif);font-style:italic;font-size:.9rem;color:var(--gold-deep);opacity:.92;}
 
   @media(max-width:640px){
-    .timeline::before{left:20px;}
-    .ev-row,.ev-row.right{justify-content:flex-end;padding-left:48px;}
-    .ev-row::before{left:20px;}
+    .timeline::before{left:22px;}
+    .ev-row,.ev-row.right{justify-content:flex-end;padding-left:52px;}
+    .ev-row::before{left:22px;}
     .ev-row::after,.ev-row.right::after{display:none;}
     .ev{width:100%;}
-    .day-badge{align-items:flex-start;padding-left:48px;}
+    .day-badge{align-items:flex-start;padding-left:52px;}
+    /* keep the ribbon banner inside the viewport */
+    .day-badge-pill{font-size:.56rem;letter-spacing:.14em;padding:11px 22px;max-width:100%;}
+    .day-badge-sub{margin-top:22px;}
+    .tl-crest{align-items:flex-start;padding-left:0;}
   }
 
   /* ========== COUPLE ========== */
@@ -386,6 +415,16 @@
 
   <div class="timeline">
 
+    <!-- monogram crest -->
+    <div class="tl-crest reveal">
+      <svg viewBox="0 0 120 96" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M60 6c10 9 24 12 38 12-2 30-16 52-38 66C38 70 24 48 22 18c14 0 28-3 38-12Z"/>
+        <path d="M60 14c8 7 19 10 30 10-2 24-13 42-30 53C43 66 32 48 30 24c11 0 22-3 30-10Z" opacity=".55"/>
+        <text x="60" y="52" text-anchor="middle" font-family="Aboreto, serif" font-size="22" fill="currentColor" stroke="none" letter-spacing="1">K&amp;A</text>
+        <path d="M12 30c-5 4-8 4-10 2M108 30c5 4 8 4 10 2"/>
+      </svg>
+    </div>
+
     <!-- ─── DAY ONE ─── -->
     <div class="day-badge reveal">
       <div class="day-badge-pill">Day One · 31 October 2026</div>
@@ -394,11 +433,11 @@
 
     <div class="ev-row reveal">
       <a class="ev" href="events/haldi.html">
-        <div class="ev-arch" style="background-image:url('assets/gfx/haldi.png')"></div>
+        <span class="ev-arch"><img class="ev-photo" src="assets/gfx/haldi.png" alt=""></span>
         <div class="ev-body">
           <div class="ev-time">2:00 PM</div>
           <div class="ev-name">Haldi</div>
-          <div class="ev-divider"></div>
+          <div class="ev-divider"><i></i></div>
           <div class="ev-venue"><b>The Bagichi</b></div>
         </div>
       </a>
@@ -406,11 +445,11 @@
 
     <div class="ev-row right reveal">
       <a class="ev" href="events/sangeet.html">
-        <div class="ev-arch" style="background-image:url('assets/gfx/sangeet.png')"></div>
+        <span class="ev-arch"><img class="ev-photo" src="assets/gfx/sangeet.png" alt=""></span>
         <div class="ev-body">
           <div class="ev-time">8:00 PM onwards</div>
           <div class="ev-name">Sangeet</div>
-          <div class="ev-divider"></div>
+          <div class="ev-divider"><i></i></div>
           <div class="ev-venue"><b>Arjun Mahal</b></div>
         </div>
       </a>
@@ -424,12 +463,12 @@
 
     <div class="ev-row reveal">
       <a class="ev" href="events/bhoj.html">
-        <div class="ev-arch" style="background-image:url('assets/gfx/ev-bhoj.png')"></div>
+        <span class="ev-arch"><img class="ev-photo" src="assets/gfx/ev-bhoj.png" alt=""></span>
         <div class="ev-body">
           <div class="ev-time">12:00 PM-4:30PM</div>
           <div class="ev-time">Feel free to join us at your leisure</div>
           <div class="ev-name">Rajasthani Bhoj</div>
-          <div class="ev-divider"></div>
+          <div class="ev-divider"><i></i></div>
           <div class="ev-venue"><b>Chandra Mahal</b></div>
         </div>
       </a>
@@ -437,11 +476,11 @@
 
     <div class="ev-row right reveal">
       <a class="ev" href="events/phera.html">
-        <div class="ev-arch" style="background-image:url('assets/gfx/phera.png')"></div>
+        <span class="ev-arch"><img class="ev-photo" src="assets/gfx/phera.png" alt=""></span>
         <div class="ev-body">
           <div class="ev-time">5:00 PM</div>
           <div class="ev-name">The Wedding</div>
-          <div class="ev-divider"></div>
+          <div class="ev-divider"><i></i></div>
           <div class="ev-venue"><b>Hathi Kund</b><span class="ev-note">where two souls become one</span></div>
         </div>
       </a>
@@ -449,11 +488,11 @@
 
     <div class="ev-row reveal">
       <a class="ev" href="events/reception.html">
-        <div class="ev-arch" style="background-image:url('assets/gfx/ev-reception.png')"></div>
+        <span class="ev-arch"><img class="ev-photo" src="assets/gfx/ev-reception.png" alt=""></span>
         <div class="ev-body">
           <div class="ev-time">8:00 PM onwards</div>
           <div class="ev-name">Reception Dinner</div>
-          <div class="ev-divider"></div>
+          <div class="ev-divider"><i></i></div>
           <div class="ev-venue"><b>Chandni Lawn</b><span class="ev-note">dinner, dancing &amp; farewells under the stars</span></div>
         </div>
       </a>
@@ -698,6 +737,14 @@
   }
   setTimeout(()=>{ if(!ready) finishLoading(); }, 9000);
   window.addEventListener('resize', ()=>{ sizeCanvas(); update(); parallax(); });
+})();
+
+/* ====== ORNATE FRAME: fall back to a gilt mat until the PNG is present ====== */
+(function(){
+  const test = new Image();
+  test.onload = function(){ document.body.classList.remove('frame-missing'); };
+  test.onerror = function(){ document.body.classList.add('frame-missing'); };
+  test.src = 'assets/gfx/frame-oval.png';
 })();
 
 /* ===================== SCROLL REVEAL ===================== */

@@ -45,9 +45,9 @@ a{color:inherit;}
 .ev-when{margin-top:18px;font-family:var(--serif);font-style:italic;font-size:clamp(1.2rem,3vw,1.6rem);color:var(--ink-soft);}
 
 /* framed themed illustration */
-.portrait{position:relative;width:clamp(240px,62vw,340px);aspect-ratio:320/400;margin:34px auto 6px;}
+.portrait{position:relative;width:clamp(240px,62vw,340px);aspect-ratio:552/736;margin:34px auto 6px;}
 .portrait::before{content:'';position:absolute;inset:-8% -8% -6%;border-radius:50%;background:radial-gradient(ellipse at 50% 45%,var(--accent),transparent 68%);opacity:.32;filter:blur(26px);z-index:-1;}
-.portrait .photo{position:absolute;left:17.5%;right:17.5%;top:16.4%;bottom:16.4%;border-radius:50%;background-size:cover;background-position:center;box-shadow:inset 0 0 26px rgba(60,30,10,.45);}
+.portrait .photo{position:absolute;left:20.2%;right:20.6%;top:20.5%;bottom:20%;border-radius:50%;background-size:cover;background-position:center;box-shadow:inset 0 0 26px rgba(60,30,10,.45);}
 .portrait .fr{position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 12px 22px rgba(0,0,0,.22));}
 
 /* details */
