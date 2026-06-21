@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kamayani weds Ankit — Nahargarh Palace, Ranthambore · 31 Oct & 1 Nov 2026</title>
+<title>Kamayani & Ankit — Nahargarh Palace, Ranthambore · 31 Oct & 1 Nov 2026</title>
 <meta name="description" content="Together with their families, Kamayani & Ankit invite you to celebrate their wedding at Nahargarh Palace, Ranthambore — 31 October & 1 November 2026.">
 <meta property="og:title" content="Kamayani weds Ankit — Wedding Invitation">
 <meta property="og:description" content="31 Oct & 1 Nov 2026 · Nahargarh Palace, Ranthambore. Step through the gates and celebrate with us.">
@@ -123,7 +123,7 @@
   /* ========== INVITE ========== */
   .invite{text-align:center;}
   .invite .om{font-family:var(--deva);font-size:1.5rem;color:var(--gold-deep);margin-bottom:22px;}
-  .invite-lead{font-family:var(--sans);font-size:.66rem;letter-spacing:.4em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:26px;}
+  .invite-lead{font-family:var(--sans);font-size:clamp(.78rem,1.9vw,.95rem);font-weight:600;letter-spacing:.28em;line-height:2;text-transform:uppercase;color:var(--cream-text);margin-bottom:26px;}
   .invite-names{display:flex;flex-direction:column;align-items:center;gap:4px;margin:6px auto;width:100%;}
   .invite-names .n{font-family:var(--serif);font-weight:300;font-size:clamp(3rem,12vw,6.6rem);color:var(--cream-text);line-height:.9;}
   .invite-names .weds{font-family:var(--disp);font-size:clamp(.8rem,2vw,1.1rem);letter-spacing:.5em;text-transform:uppercase;color:var(--gold-deep);padding-left:.5em;}
@@ -192,12 +192,12 @@
      opening insets are measured from frame-oval.png (552×736, opening ~21.5%). */
   .ev-arch{
     position:relative;display:block;width:100%;
-    aspect-ratio:552/736;          /* match the frame so it isn't distorted */
+    aspect-ratio:736/552;          /* landscape frame (rotated oval) */
   }
   /* the frame, laid over the photo */
   .ev-arch::after{
     content:'';position:absolute;inset:0;z-index:2;pointer-events:none;
-    background:url("assets/gfx/frame-oval.png") center/100% 100% no-repeat;
+    background:url("assets/gfx/frame-oval-landscape.png") center/100% 100% no-repeat;
   }
   /* the photo, clipped to the oval opening (slightly inflated so it tucks
      under the gold ring with no gap) */
@@ -234,14 +234,6 @@
     .day-badge-sub{margin-top:22px;}
     .tl-crest{align-items:flex-start;padding-left:0;}
   }
-
-  /* ========== COUPLE ========== */
-  .couple-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,7vw,80px);margin-top:56px;}
-  .person{text-align:center;}
-  .arch-photo{width:clamp(180px,42vw,250px);aspect-ratio:3/4;margin:0 auto 26px;border:2px solid var(--gold);border-radius:50% 50% 14px 14px / 62% 62% 14px 14px;background-color:#F7E7EC;background-size:cover;background-position:center top;background-repeat:no-repeat;position:relative;overflow:hidden;box-shadow:0 0 0 6px rgba(190,151,47,.2),0 26px 46px -28px rgba(122,42,65,.45);}
-  .person-role{font-family:var(--sans);font-size:.62rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:8px;}
-  .person-name{font-family:var(--serif);font-weight:300;font-size:clamp(2rem,5vw,2.8rem);color:var(--cream-text);line-height:1;margin-bottom:14px;}
-  .person-bio{color:var(--ink-soft);font-size:.98rem;font-weight:300;max-width:32ch;margin:0 auto;}
 
   /* ========== MESSAGE ========== */
   .message{text-align:center;}
@@ -324,7 +316,6 @@
   @media (max-width:768px){
     .ev-list{grid-template-columns:1fr;}
     .row2{grid-template-columns:1fr;}
-    .couple-grid{grid-template-columns:1fr;gap:54px;}
     .cd-sep{display:none;}
     .countdown{gap:20px;}
     .corner{width:64px;height:64px;}
@@ -366,7 +357,7 @@
       </div>
       <h1 class="hero-names" id="hNames" style="opacity:0">
         <span class="nm">Kamayani</span><br>
-        <span class="weds">weds</span>
+        <span class="weds">&</span>
         <span class="nm">Ankit</span>
       </h1>
       <div class="hero-namemeta" id="hMeta" style="opacity:0">
@@ -385,11 +376,11 @@
   <div class="reveal">
     <img src="./assets/gfx/ganeshji.png" style="width: 10vh; height: 10vh;" alt="">
     <div class="om">ॐ श्री गणेशाय नमः</div>
-    <div class="invite-lead">The <span style="font-weight: 900;">Gupta</span> and <span style="font-weight: 900;">Nagar</span> families <br /> warmly welcome you to celebrate the marriage<br /> of</div>
+    <div class="invite-lead">The <span style="font-weight: 900;">Gupta</span> and <span style="font-weight: 900;">Nagar</span> families <br /> warmly welcome you to celebrate the marriage of</div>
   </div>
   <div class="invite-names reveal">
     <span class="n">Kamayani</span><br>
-    <span class="weds">weds</span>
+    <span class="weds">&</span>
     <span class="n">Ankit</span>
   </div>
   <p class="invite-body reveal">as they tie the knot amid the royal splendour of Ranthambore</p>
@@ -428,12 +419,12 @@
     <!-- ─── DAY ONE ─── -->
     <div class="day-badge reveal">
       <div class="day-badge-pill">Day One · 31 October 2026</div>
-      <div class="day-badge-sub">The festivities begin</div>
+    
     </div>
 
     <div class="ev-row reveal">
       <a class="ev" href="events/haldi.html">
-        <span class="ev-arch"><img class="ev-photo" src="assets/gfx/haldi.png" alt=""></span>
+        <span class="ev-arch"><img class="ev-photo" src="assets/gfx/haldi-home.png" alt=""></span>
         <div class="ev-body">
           <div class="ev-time">2:00 PM</div>
           <div class="ev-name">Haldi</div>
@@ -445,7 +436,7 @@
 
     <div class="ev-row right reveal">
       <a class="ev" href="events/sangeet.html">
-        <span class="ev-arch"><img class="ev-photo" src="assets/gfx/sangeet.png" alt=""></span>
+        <span class="ev-arch"><img class="ev-photo" src="assets/gfx/sangeet-home.png" alt=""></span>
         <div class="ev-body">
           <div class="ev-time">8:00 PM onwards</div>
           <div class="ev-name">Sangeet</div>
@@ -458,12 +449,12 @@
     <!-- ─── DAY TWO ─── -->
     <div class="day-badge reveal">
       <div class="day-badge-pill">Day Two · 1 November 2026</div>
-      <div class="day-badge-sub">The wedding day</div>
+      
     </div>
 
     <div class="ev-row reveal">
       <a class="ev" href="events/bhoj.html">
-        <span class="ev-arch"><img class="ev-photo" src="assets/gfx/ev-bhoj.png" alt=""></span>
+        <span class="ev-arch"><img class="ev-photo" src="assets/gfx/bhoj-home.png" alt=""></span>
         <div class="ev-body">
           <div class="ev-time">12:00 PM-4:30PM</div>
           <div class="ev-time">Feel free to join us at your leisure</div>
@@ -476,50 +467,16 @@
 
     <div class="ev-row right reveal">
       <a class="ev" href="events/phera.html">
-        <span class="ev-arch"><img class="ev-photo" src="assets/gfx/phera.png" alt=""></span>
+        <span class="ev-arch"><img class="ev-photo" src="assets/gfx/wed-home.png" alt=""></span>
         <div class="ev-body">
           <div class="ev-time">5:00 PM</div>
           <div class="ev-name">The Wedding</div>
           <div class="ev-divider"><i></i></div>
-          <div class="ev-venue"><b>Hathi Kund</b><span class="ev-note">where two souls become one</span></div>
+          <div class="ev-venue"><b>Hathi Kund</b></div>
         </div>
       </a>
     </div>
 
-    <div class="ev-row reveal">
-      <a class="ev" href="events/reception.html">
-        <span class="ev-arch"><img class="ev-photo" src="assets/gfx/ev-reception.png" alt=""></span>
-        <div class="ev-body">
-          <div class="ev-time">8:00 PM onwards</div>
-          <div class="ev-name">Reception Dinner</div>
-          <div class="ev-divider"><i></i></div>
-          <div class="ev-venue"><b>Chandni Lawn</b><span class="ev-note">dinner, dancing &amp; farewells under the stars</span></div>
-        </div>
-      </a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ===== MEET THE COUPLE ===== -->
-<section class="sec rose jewel couple pad">
-  <span class="elephant"><img src="" alt=""></span>
-  <div class="eyebrow reveal">Meet the</div>
-  <h2 class="title reveal">Bride <span class="gold">&amp;</span> Groom</h2>
-  <div class="flourish reveal"><span class="l"></span><span class="o"></span><span class="d"></span><span class="o"></span><span class="l r"></span></div>
-  <div class="couple-grid">
-    <div class="person reveal">
-      <div class="arch-photo" data-par="10" style="background-image:url('assets/gfx/bride.png')"></div>
-      <div class="person-role">The Bride</div>
-      <div class="person-name">Kamayani</div>
-      <p class="person-bio">A lover of slow mornings, old film songs and impossibly good chai — with a laugh that fills every room she walks into.</p>
-    </div>
-    <div class="person reveal">
-      <div class="arch-photo" data-par="10" style="background-image:url('assets/gfx/groom.png')"></div>
-      <div class="person-role">The Groom</div>
-      <div class="person-name">Ankit</div>
-      <p class="person-bio">Equal parts dreamer and planner, happiest on a road trip with a good playlist — and the calm to her every storm.</p>
-    </div>
   </div>
 </section>
 
@@ -528,7 +485,8 @@
   <span class="chai-elephant left"><img src="assets/gfx/chai-elephant-left.png" alt="Decorative elephant entering from the left"></span>
   <span class="chai-elephant right"><img src="assets/gfx/chai-elephant-right.png" alt="Decorative elephant entering from the right"></span>
   <img class="cartouche reveal" src="assets/gfx/cartouche.svg" alt="" data-par="8">
-  <p class="quote reveal">"From a chance cup of chai to forever — we can't wait to celebrate with the people who made our story whole."</p>
+  <p class="quote reveal">"We would love to celebrate with you and hope you'll join us in Ranthambore!
+"</p>
   <div class="by reveal">— Kamayani &amp; Ankit</div>
 </section>
 
@@ -555,7 +513,7 @@
       <div class="field"><label>Which celebrations?</label>
         <div class="row2" style="gap:10px">
           <select id="rday1"><option value="">Day 1 — 31 Oct</option><option>Haldi</option><option>Sangeet</option><option>Both</option></select>
-          <select id="rday2"><option value="">Day 2 — 1 Nov</option><option>Rajasthani Bhoj</option><option>Phera Ceremony</option><option>Reception</option><option>All</option></select>
+          <select id="rday2"><option value="">Day 2 — 1 Nov</option><option>Rajasthani Bhoj</option><option>Phera Ceremony</option><option>All</option></select>
         </div>
       </div>
       <div class="field"><label for="rmsg">A note for the couple</label><textarea id="rmsg" placeholder="Blessings, song requests, dietary notes…"></textarea></div>
@@ -605,7 +563,7 @@
       <div class="cd-item"><div class="cd-num" id="cdS">--</div><div class="cd-label">Seconds</div></div>
     </div>
     <div class="flourish"><span class="l"></span><span class="o"></span><span class="d"></span><span class="o"></span><span class="l r"></span></div>
-    <div class="footer-names"><span class="n">Kamayani</span><br><span class="weds">weds</span><span class="n">Ankit</span></div>
+    <div class="footer-names"><span class="n">Kamayani</span><br><span class="weds">&</span><span class="n">Ankit</span></div>
     <div class="footer-tag"><b>The journey begins, beneath the Ranthambore sky</b></div>
     <div class="footer-hash">#KamayaniWedsAnkit</div>
     <div class="footer-credit">31 October &amp; 1 November 2026 · Nahargarh Palace, Ranthambore</div>
