@@ -4,6 +4,7 @@
   --gold:#BE972F; --gold-deep:#946C1C;
   --wine:#7A2A41; --wine-deep:#531B2C;
   --cream:#FCF5EE; --ink:#3A2A30; --ink-soft:#8A6873;
+  --cream-text: #6a233b;
   --accent:#BE972F;
   --disp:'Aboreto', serif; --serif:'Cormorant', serif; --sans:'Manrope', sans-serif; --deva:'Gotu', serif;
   --damask:url("../assets/gfx/damask.svg");
@@ -97,3 +98,28 @@ a{color:inherit;}
 
 @media (max-width:560px){ .detail-grid{grid-template-columns:1fr 1fr;} .travel{grid-template-columns:1fr;} }
 @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto;} }
+
+.invite-names {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        margin: 6px auto;
+        width: 100%;
+        margin-bottom: 5em;
+      }
+      .invite-names .n {
+        font-family: "Great Vibes", cursive;
+        font-weight: 400;
+        font-size: clamp(3.6rem, 14vw, 7.6rem);
+        color: var(--cream-text);
+        line-height: 1;
+      }
+      .invite-names .weds {
+        font-family: var(--disp);
+        font-size: clamp(0.8rem, 2vw, 1.1rem);
+        letter-spacing: 0.5em;
+        text-transform: uppercase;
+        color: var(--gold-deep);
+        padding-left: 0.5em;
+      }
